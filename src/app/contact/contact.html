@@ -1,0 +1,37 @@
+<section class="contact-page">
+  <div class="contact-wrapper fade-in">
+    <div class="contact-left">
+      <h1 class="title">დამიკავშირდი</h1>
+      <p class="subtitle">
+        გინდა თანამშრომლობა, პროექტზე საუბარი ან უბრალოდ კითხვების დასმა?
+        შეგიძლია დამიკავშირდე ნებისმიერ პლატფორმაზე 👇
+      </p>
+
+      <div class="contact-info">
+        <div class="info-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>{{ contactInfo.phone }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>{{ contactInfo.email }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>{{ contactInfo.location }}</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener">
+          <i [class]="link.icon"></i>
+          <span>{{ link.name }}</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-right fade-in delay1">
+      <img src="assets/PFP.png" alt="Contact Image" />
+    </div>
+  </div>
+</section>

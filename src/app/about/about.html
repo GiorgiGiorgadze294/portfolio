@@ -1,0 +1,145 @@
+<section class="about-wrap" id="about">
+  <div class="container about-grid">
+
+    <!-- LEFT: PROFILE CARD -->
+    <aside class="profile-card fade-up">
+      <div class="photo-wrap">
+        <img
+          src="assets/PFP.png"
+          alt="Profile Photo"
+          class="profile-photo"
+        />
+      </div>
+
+      <h1 class="name">გიორგი გიორგაძე</h1>
+      <p class="role">Front-End Developer • Angular Specialist</p>
+
+      <div class="meta">
+        <div><strong>განათლება:</strong> IT STEP აკადემია (2 წელი)</div>
+        <div><strong>სერტიფიკატები:</strong> ლოკალურ და საერთაშორისო</div>
+      </div>
+
+      <div class="skills">
+        <span class="skill">Angular</span>
+        <span class="skill">TypeScript</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS </span>
+        <span class="skill">Unity 3D</span>
+        <span class="skill">C#</span>
+        <span class="skill">C# API</span>
+        <span class="skill">Git</span>
+      </div>
+
+      <a routerLink="/contact" class="cta">დამიკავშირდი</a>
+    </aside>
+
+    <div class="about-main">
+
+      <div class="intro-card fade-up delay-1">
+        <h2>ჩემს შესახებ</h2>
+        <p>
+          გამარჯობა! მე ვარ მიზანმიმართული <strong>Front-End დეველოპერი</strong>, რომელიც სპეციალიზდება
+          Angular-ის მიხედვით კომპონენტურ არქიტექტურაში და მომხმარებლის გამოცდილების დახვეწაში.
+          დავამთავრე <strong>IT STEP აკადემია</strong> — 2-წლიანი პროგრამა, სადაც შევისწავლე
+          <em>Front-End, Back-End, UI/UX და Game Development</em>. მქონია პრაქტიკული პროექტები Angular,
+          TypeScript და JavaScript ტექნოლოგიებით.
+        </p>
+      </div>
+
+      <div class="timeline-card fade-up delay-2">
+        <h3>პროფესიული გზა</h3>
+        <ul class="timeline">
+          <li>
+            <span class="time">2021 — 2023</span>
+            <div class="desc">
+              <strong>IT STEP აკადემია</strong><br />
+              სრული კურსი: ვებპროგრამირება, UI/UX, Back-End, GameDev
+            </div>
+          </li>
+          <li>
+            <span class="time">2023 — 2024</span>
+            <div class="desc">
+              <strong>პროექტები & პირადი პორტფოლიო</strong><br />
+              Angular აპლიკაციები, API ინტეგრაციები
+            </div>
+          </li>
+          <li>
+            <span class="time">2025 — ახლა</span>
+            <div class="desc">
+              <strong>სერთიფიკატები (ლოკალური & საერთაშორისო)</strong><br />
+              პროფესიული განვითარება და უწყვეტი სწავლა
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="certs-card fade-up delay-3">
+        <h3>სერტიფიკატები & მიღწევები</h3>
+
+        <div class="certs-grid">
+          <figure
+            class="cert"
+            (click)="openCert(
+              'assets/sertifikati2.png',
+              'IT STEP — სერთიფიკატი'
+            )"
+          >
+            <img
+              src="assets/sertifikati2.png"
+              alt="IT STEP Certificate"
+              loading="lazy"
+            />
+            <figcaption>IT STEP — სერთიფიკატი</figcaption>
+          </figure>
+
+          <figure
+            class="cert"
+            (click)="openCert(
+              'assets/sertifikati1.png',
+              'სერთიფიკატი/დანართი'
+            )"
+          >
+            <img
+              src="assets/sertifikati1.png"
+              alt="International Certificate"
+              loading="lazy"
+            />
+            <figcaption>სერთიფიკატი/დანართი</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="cta-row fade-up delay-4">
+        <p>
+          ✨ ყოველთვის გახსნილი ვარ ახალ შესაძლებლობებსა და საინტერესო პროექტებისთვის — თუ გინდა ითანამშრომლო
+          ან გაგიზიარო იდეა, სიამოვნებით მოგისმენ. 🚀
+        </p>
+        <div class="cta-buttons">
+          <a routerLink="/projects" class="btn primary">პროექტები</a>
+          <a href="assets/Front-End-CV-GiorgiGiorgadze.pdf" download class="btn outline">
+            ჩამოტვირთე CV
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: CERTIFICATE PREVIEW -->
+  <div
+    class="cert-modal-backdrop"
+    *ngIf="selectedCert"
+    (click)="closeCert($event)"
+  >
+    <div class="cert-modal" (click)="$event.stopPropagation()">
+      <button class="cert-modal__close" (click)="closeCert($event)">✕</button>
+      <img
+        [src]="selectedCert.src"
+        [alt]="selectedCert.title || 'Certificate preview'"
+      />
+      <p class="cert-modal__title">
+        {{ selectedCert.title }}
+      </p>
+    </div>
+  </div>
+</section>

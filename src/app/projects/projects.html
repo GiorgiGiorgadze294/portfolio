@@ -1,0 +1,108 @@
+<section class="projects-wrap" id="projects">
+  <div class="container">
+    <header class="projects-header fade-up">
+      <h2>პროექტები</h2>
+      <p class="lead">აქ არის ჩემი ბოლო პროექტები — Angular აპლიკაციები, SPA, UI ექსპერიმენტები და სხვა.</p>
+
+      <div class="filters">
+        <button
+          *ngFor="let f of filters"
+          (click)="selectFilter(f)"
+          [class.active]="selectedFilter === f"
+          class="filter-btn"
+        >
+          {{ f }}
+        </button>
+      </div>
+    </header>
+
+    <div class="projects-grid fade-up delay-1">
+      <article
+        *ngFor="let p of filteredProjects()"
+        class="project-card"
+        (click)="openModal(p)"
+        tabindex="0"
+        (keyup.enter)="openModal(p)"
+        role="button"
+        aria-label="Open project {{p.title}}"
+      >
+        <div class="thumb">
+          <img [src]="p.image" [alt]="p.title" loading="lazy" />
+        </div>
+
+        <div class="card-body">
+          <h3 class="title">{{ p.title }}</h3>
+          <p class="short">{{ p.short }}</p>
+          <div class="meta">
+            <span class="tag">{{ p.category }}</span>
+            <span class="year">{{ p.year }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty" *ngIf="filteredProjects().length === 0">
+      <p>პროექტი ვერ მოიძებნა ამ ფილტრის მიხედვით.</p>
+    </div>
+  </div>
+
+  <!-- Modal / Lightbox -->
+  <div class="modal-backdrop" *ngIf="activeProject" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+      <button class="modal-close" (click)="closeModal()" aria-label="Close">&times;</button>
+
+        <div class="modal-content">
+        <div class="modal-left">
+            <img [src]="activeProject.image" [alt]="activeProject.title" />
+        </div>
+
+        <div class="modal-right">
+            <h3>{{ activeProject.title }}</h3>
+            <p class="modal-desc">{{ activeProject.description }}</p>
+
+            <ul class="modal-list">
+            <li *ngIf="activeProject.tech?.length">
+                <strong>ტექნოლოგიები:</strong> {{ activeProject.tech.join(', ') }}
+            </li>
+
+            <li *ngIf="activeProject.year !== undefined">
+                <strong>წელი:</strong> {{ activeProject.year }}
+            </li>
+
+            <li *ngIf="activeProject.repo">
+                <strong>Repo:</strong>
+                <a [href]="activeProject.repo" target="_blank" rel="noopener">GitHub</a>
+            </li>
+
+            <li *ngIf="activeProject.live">
+                <strong>Live:</strong>
+                <a [href]="activeProject.live" target="_blank" rel="noopener">გაშვება</a>
+            </li>
+            </ul>
+
+            <div class="modal-actions">
+            <a
+                *ngIf="activeProject.live"
+                [href]="activeProject.live"
+                target="_blank"
+                class="btn primary"
+                rel="noopener"
+            >
+                ნახე ცოცხლად
+            </a>
+            <a
+                *ngIf="activeProject.repo"
+                [href]="activeProject.repo"
+                target="_blank"
+                class="btn outline"
+                rel="noopener"
+            >
+                რისპოზიტორიში
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
