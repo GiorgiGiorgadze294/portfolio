@@ -4,12 +4,12 @@
       <a routerLink="/">MyPortfolio</a>
     </div>
 
-    <ul class="nav-links" [class.active]="menuActive">
-      <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()">მთავარი</a></li>
-      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">ჩემს შესახებ</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">პროექტები</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">კონტაქტი</a></li>
-    </ul>
+<ul class="nav-links" [class.active]="menuActive">
+  <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()">Home</a></li>
+  <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About Me</a></li>
+  <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a></li>
+  <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+</ul>
 
     <div class="hamburger" (click)="toggleMenu()">
       <div [class.change]="menuActive" class="bar1"></div>

@@ -1,37 +1,50 @@
 <section class="contact-page">
   <div class="contact-wrapper fade-in">
+
     <div class="contact-left">
-      <h1 class="title">დამიკავშირდი</h1>
+      <h1 class="title">Get in Touch</h1>
+
       <p class="subtitle">
-        გინდა თანამშრომლობა, პროექტზე საუბარი ან უბრალოდ კითხვების დასმა?
-        შეგიძლია დამიკავშირდე ნებისმიერ პლატფორმაზე 👇
+        Want to collaborate, discuss a project, or just ask a question?
+        Feel free to reach me on any platform 👇
       </p>
 
       <div class="contact-info">
         <div class="info-item">
           <i class="fa-solid fa-phone"></i>
-          <span>{{ contactInfo.phone }}</span>
+          <a class="info-link" [href]="'tel:' + contactInfo.phone">{{ contactInfo.phone }}</a>
         </div>
+
         <div class="info-item">
           <i class="fa-solid fa-envelope"></i>
-          <span>{{ contactInfo.email }}</span>
+          <a class="info-link" [href]="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a>
         </div>
+
         <div class="info-item">
           <i class="fa-solid fa-location-dot"></i>
           <span>{{ contactInfo.location }}</span>
         </div>
       </div>
 
-      <div class="social-links">
-        <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener">
-          <i [class]="link.icon"></i>
+      <div class="social-links" role="list">
+        
+         <a *ngFor="let link of socialLinks"
+          role="listitem"
+          class="social-btn"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener"
+          [attr.aria-label]="link.name"
+        >
+          <i [class]="link.icon" aria-hidden="true"></i>
           <span>{{ link.name }}</span>
         </a>
       </div>
     </div>
 
     <div class="contact-right fade-in delay1">
-      <img src="assets/PFP.png" alt="Contact Image" />
+      <img src="assets/PFP.png" alt="Profile photo" />
     </div>
+
   </div>
 </section>

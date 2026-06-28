@@ -24,6 +24,6 @@ export class Contact {
   contactInfo = {
     phone: '+995 599-396-381',
     email: 'webmaker897@gmail.com',
-    location: 'თბილისი, საქართველო'
+    location: 'Tbilisi, Georgia'
   };
 }

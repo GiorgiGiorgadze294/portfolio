@@ -7,7 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 10%;
+
+  /* responsive padding (auto adapts) */
+  padding: clamp(48px, 6vw, 80px) clamp(16px, 6vw, 10%);
   color: #fff;
 }
 
@@ -31,6 +33,7 @@
   font-weight: 700;
   color: #00c2ff;
   margin-bottom: 20px;
+  letter-spacing: 0.2px;
 }
 
 .subtitle {
@@ -38,6 +41,7 @@
   color: #ccc;
   line-height: 1.7;
   margin-bottom: 40px;
+  max-width: 56ch;
 }
 
 /* Contact Info */
@@ -52,17 +56,28 @@
   font-size: 1.1rem;
   color: #ddd;
   transition: 0.3s;
+  gap: 12px;
 }
 
 .info-item i {
   color: #00c2ff;
-  margin-right: 12px;
   font-size: 1.3rem;
+  flex: 0 0 auto;
 }
 
 .info-item:hover {
   color: #fff;
   transform: translateX(5px);
+}
+
+/* Clickable phone/email */
+.info-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info-link:hover {
+  text-decoration: underline;
 }
 
 /* Social Links */
@@ -72,27 +87,28 @@
   gap: 15px;
 }
 
-.social-links a {
+.social-btn {
   display: flex;
   align-items: center;
   background: #111;
   padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   color: #fff;
   font-weight: 500;
   transition: 0.3s;
   border: 1px solid #222;
+  user-select: none;
+  gap: 10px;
 }
 
-.social-links a:hover {
+.social-btn:hover {
   background: #00c2ff;
   color: #fff;
   transform: translateY(-3px);
 }
 
-.social-links i {
-  margin-right: 10px;
+.social-btn i {
   font-size: 1.2rem;
 }
 
@@ -134,17 +150,24 @@
   }
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
+
+/* Your existing breakpoint (kept + improved) */
 @media (max-width: 950px) {
   .contact-wrapper {
     flex-direction: column-reverse;
     text-align: center;
   }
 
+  .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .contact-right img {
     width: 250px;
     margin-bottom: 40px;
-    margin-top: 50px;
+    margin-top: 20px;
   }
 
   .social-links {
@@ -153,5 +176,110 @@
 
   .title {
     font-size: 2.3rem;
+  }
+
+  /* info items centered */
+  .info-item {
+    justify-content: center;
+  }
+
+  .info-item:hover {
+    transform: translateY(-2px); /* nicer on center layout */
+  }
+}
+
+/* Tablets / small phones */
+@media (max-width: 768px) {
+  .contact-page{
+    margin-top: 100px;
+  }
+  .subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+  }
+
+  .info-item {
+    font-size: 1.05rem;
+  }
+
+  .social-btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .contact-right img {
+    width: 230px;
+  }
+}
+
+/* Phones */
+@media (max-width: 520px) {
+  .contact-page {
+    padding: 44px 16px;
+    min-height: auto; /* phone-ზე უფრო კომფორტული scroll */
+  }
+
+  .contact-wrapper {
+    gap: 26px;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .contact-info {
+    margin-bottom: 22px;
+  }
+
+  .info-item {
+    justify-content: center;
+    margin-bottom: 12px;
+    text-align: center;
+
+    /* wrap safe */
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  /* Social links become grid */
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    justify-items: stretch;
+  }
+
+  .social-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 10px;
+  }
+
+  .social-btn span {
+    font-size: 0.95rem;
+  }
+
+  .contact-right img {
+    width: 190px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr; /* 1 column */
   }
 }
